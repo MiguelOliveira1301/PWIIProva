@@ -1,0 +1,42 @@
+﻿@page "/Categoria_Listar"
+
+@using PWFilmes.Domain
+ 
+
+<h3>Listagem de categorias</h3>
+
+<RadzenDataGrid 
+                AllowFiltering="true" 
+                AllowColumnResize="true" 
+                AllowAlternatingRows="true" 
+                FilterMode="FilterMode.Advanced" 
+                AllowSorting="true" 
+                PageSize="5" 
+                AllowPaging="true" 
+                PagerHorizontalAlign="HorizontalAlign.Left" 
+                ShowPagingSummary="true"
+                Data="@categorias" 
+                TItem="Categoria" 
+                ColumnWidth="300px" 
+                LogicalFilterOperator="LogicalFilterOperator.Or">
+    <Columns>
+        <RadzenDataGridColumn TItem="Categoria" Property="Codigo" Title="Codigo" Width="160px" />
+        <RadzenDataGridColumn TItem="Categoria" Property="Descricao" Title="Descricao" Width="160px" />
+        <RadzenDataGridColumn TItem="Categoria" Property="Cor" Title="Cor" Width="200px" />
+    </Columns>
+</RadzenDataGrid>
+
+@code {
+    List<Categoria> categorias = new List<Categoria>();
+
+    protected override void OnInitialized()
+    {
+        categorias.Add(new Categoria { Codigo = 1, Descricao = "Terror", Cor = "Preto" });
+        categorias.Add(new Categoria { Codigo = 2, Descricao = "Suspense", Cor = "Cinza" });
+        categorias.Add(new Categoria { Codigo = 3, Descricao = "Drama", Cor = "Rosa" });
+        categorias.Add(new Categoria { Codigo = 4, Descricao = "Ação", Cor = "Verde" });
+        categorias.Add(new Categoria { Codigo = 5, Descricao = "Comédia", Cor = "Amarelo" });
+
+    }
+
+}
